@@ -1,0 +1,44 @@
+    #Increase swapfile
+
+    #cli system information script for console
+inxi -Sp
+
+    #
+swapon
+
+    #disable swap
+sudo swapoff -a
+
+    #increase swapfile size to the desired amount
+sudo dd if=/dev/zero of=/swapfile bs=1M count= "<desired swapfile size>"
+
+    #read/write permission to user
+sudo chmod 0600 /swapfile
+
+    #create new swapfile
+sudo mkswap /swapfile
+
+    #make swap available for swopping and paging
+sudo swapon -a 
+
+
+    #check new swapfile is active [SPECIFIC STATS WILL CHANGE FOR YOUR SYSTEM]
+inxi -SP
+    
+  #output below
+    #System:
+    #Host: lenovo Kernel: 5.15.0-107-generic x86_64 bits: 64
+    #Desktop: Xfce 4.18.1 Distro: Linux Mint 21.3 Virginia
+    #Partition:
+    #ID-1: / size: 915.32 GiB used: 357.65 GiB (39.1%) fs: ext4 dev: /dev/sda2
+    #ID-2: /boot/efi size: 511 MiB used: 6.1 MiB (1.2%) fs: vfat
+
+
+
+swapon
+
+  #output below
+    #NAME      TYPE SIZE USED PRIO
+    #/swapfile file   4G 268K   -2
+
+
